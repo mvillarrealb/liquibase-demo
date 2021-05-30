@@ -1,0 +1,15 @@
+micronaut:
+  application:
+    name: bookDemoMicronaut
+datasources:
+  default:
+    url: jdbc:postgresql://localhost:5432/book_demo_micronaut
+    driverClassName: org.postgresql.Driver
+    username: postgres
+    password: 'casa1234'
+    dialect: POSTGRES
+liquibase:
+  enabled: true
+  datasources:
+    default:
+      change-log: 'classpath:db/changelog.yaml'

@@ -1,0 +1,6 @@
+applicationType: default
+defaultPackage: org.mvillabe.books
+testFramework: junit
+sourceLanguage: java
+buildTool: gradle
+features: [annotation-api, app-name, data, data-jpa, gradle, http-client, java, java-application, jdbc-hikari, junit, liquibase, logback, netty-server, postgres, readme, shade, testcontainers, yaml]
