@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="books-e2e" tests="8" time="0.349">
+  <testsuite name="authors / createAuthor" id="5aa3eaa6-8177-42ca-a4ef-e8fc37d7328a" timestamp="2021-05-31T01:52:32.858Z" tests="2" failures="0" errors="0" time="0.212">
+    <testcase name="Status code is 201" time="0.212" classname="BooksE2E"/>
+    <testcase name="Response must have authorId" time="0.212" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="authors / findAuthors" id="e5b1886d-5b8e-4fd5-8623-17c802755dc2" timestamp="2021-05-31T01:52:32.858Z" tests="2" failures="0" errors="0" time="0.055">
+    <testcase name="Status code is 200" time="0.055" classname="BooksE2E"/>
+    <testcase name="Response has authors" time="0.055" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="authors / findAuthorById" id="3a04ed10-ff37-4bd5-a854-628d33154531" timestamp="2021-05-31T01:52:32.858Z" tests="1" failures="0" errors="0" time="0.012">
+    <testcase name="Status code is 200" time="0.012" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="authors / findAuthorByIdNotFound" id="2a192680-aa60-4d37-8010-7bbf9399c035" timestamp="2021-05-31T01:52:32.858Z" tests="1" failures="0" errors="0" time="0.023">
+    <testcase name="Status code is 404" time="0.023" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="books / createBook" id="1c70ba13-d8fd-4a64-93ea-52c1faea62f7" timestamp="2021-05-31T01:52:32.858Z" tests="2" failures="0" errors="0" time="0.017">
+    <testcase name="Status code is 201" time="0.017" classname="BooksE2E"/>
+    <testcase name="Response must have bookId" time="0.017" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="books / findBooks" id="37b9156c-29b4-462b-958c-40c3d7dcce57" timestamp="2021-05-31T01:52:32.858Z" tests="2" failures="0" errors="0" time="0.013">
+    <testcase name="Status code is 200" time="0.013" classname="BooksE2E"/>
+    <testcase name="Response has authors" time="0.013" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="books / findBookById" id="4aaaba5e-9c7f-4a7a-9409-1efc67a3585a" timestamp="2021-05-31T01:52:32.858Z" tests="1" failures="0" errors="0" time="0.008">
+    <testcase name="Status code is 200" time="0.008" classname="BooksE2E"/>
+  </testsuite>
+  <testsuite name="books / findBookByIdNotFound" id="3987af1a-5606-45bd-b52d-83645bfe135a" timestamp="2021-05-31T01:52:32.858Z" tests="1" failures="0" errors="0" time="0.009">
+    <testcase name="Status code is 404" time="0.009" classname="BooksE2E"/>
+  </testsuite>
+</testsuites>

@@ -1,0 +1,17 @@
+server:
+  port: 8080
+spring:
+  liquibase:
+    enabled: true
+    change-log: "classpath:/db/changelog.yaml"
+  datasource:
+    url: "jdbc:postgresql://${DATABASE_IP}:5432/book_demo"
+    driverClassName: "org.postgresql.Driver"
+    type: "com.zaxxer.hikari.HikariDataSource"
+    username: "${DATABASE_USERNAME}"
+    password: "${DATABASE_PASSWORD}"
+cloud:
+  gcp:
+    project-id: "${PROJECT_ID}"
+      credentials:
+        encoded-key: "${PUB_SUB_SERVICE_ACCOUNT}"

@@ -19,3 +19,15 @@ databaseChangeLog:
         relativeToChangelogFile: true
         stripComments: true
         path: "v_1_0_1/adding-comments.sql"
+  - changeSet:
+      id: v_1_0_2
+      author: "Marco Villarreal"
+      comment: |
+        * Adding book cover url column
+        * Adding book year column
+        * Adding comments for booth columns
+      sqlFile:
+        encoding: utf8
+        relativeToChangelogFile: true
+        stripComments: true
+        path: "v_1_0_2/additional-book-data.sql"
