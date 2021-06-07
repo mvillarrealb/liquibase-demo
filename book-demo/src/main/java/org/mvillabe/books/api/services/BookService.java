@@ -67,8 +67,10 @@ public class BookService {
         Book book = bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException(bookId));
         BlobId blobId = BlobId.of("attachments", "book-"+bookId+".jpg");
         storageService.uploadFile(blobId, filePart, (url) -> {
+            log.info("Attaching url for book cover {}", url);
             book.setCoverURL(url);
             bookRepository.save(book);
+            log.info("Successfully attached book cover url for book {} with url {}", bookId, url);
         });
         return Mono.empty().then();
     }

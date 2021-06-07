@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
 import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @RestController
@@ -35,7 +36,7 @@ public class BookController {
     }
 
     @PutMapping(value = "books/{bookId}/cover", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
-    public Mono<Void> uploadCover(@PathVariable("bookId") Long bookId, @RequestPart("files") Mono<FilePart> filePartMono) {
+    public Mono<Void> uploadCover(@PathVariable("bookId") Long bookId, @NotNull @RequestPart("files") Mono<FilePart> filePartMono) {
         return  filePartMono
                 .flatMap(it -> this.bookService.upload(bookId, it))
                 .then();

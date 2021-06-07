@@ -78,7 +78,6 @@ public class BeanConfiguration {
     @Primary
     @DependsOn({ "pubSubEmulatorContainer" })
     public PubSubTemplate fileProcessor(PublisherFactory publisherFactory, SubscriberFactory subscriberFactory, PubSubAdmin pubSubAdmin) {
-        pubSubAdmin.createTopic("books.created");
         return new PubSubTemplate(publisherFactory, subscriberFactory);
     }
 
