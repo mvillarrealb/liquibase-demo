@@ -2,7 +2,6 @@ package org.mvillabe.books.domain.events;
 
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
-import org.mvillabe.books.api.common.CommonEvent;
 import org.mvillabe.books.domain.entities.Book;
 
 @Data

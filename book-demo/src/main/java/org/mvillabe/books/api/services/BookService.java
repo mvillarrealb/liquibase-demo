@@ -74,4 +74,10 @@ public class BookService {
         });
         return Mono.empty().then();
     }
+
+    public byte[] getBookCover(Long bookId) {
+        Book book = bookRepository.findById(bookId).orElseThrow(() -> new BookNotFoundException(bookId));
+        BlobId blobId = BlobId.of("attachments", "book-"+bookId+".jpg");
+        return storageService.getFileBytes(blobId);
+    }
 }

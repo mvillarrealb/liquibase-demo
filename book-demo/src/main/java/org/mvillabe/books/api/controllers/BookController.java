@@ -41,4 +41,9 @@ public class BookController {
                 .flatMap(it -> this.bookService.upload(bookId, it))
                 .then();
     }
+
+    @GetMapping(value = "books/{bookId}/cover", produces = MediaType.IMAGE_JPEG_VALUE)
+    public @ResponseBody byte[] getBookCover(@PathVariable("bookId") Long bookId) {
+        return bookService.getBookCover(bookId);
+    }
 }

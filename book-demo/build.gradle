@@ -23,7 +23,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-validation'
 	implementation 'org.springframework.cloud:spring-cloud-gcp-starter-pubsub'
 	implementation 'org.springframework.cloud:spring-cloud-gcp-starter-storage'
-	implementation 'org.springframework.cloud:spring-cloud-gcp-autoconfigure'
 	implementation 'org.liquibase:liquibase-core'
 	implementation 'org.apache.commons:commons-text:1.9'
 	compileOnly 'org.projectlombok:lombok'

@@ -3,6 +3,7 @@ package org.mvillabe.books.api.services;
 import com.google.cloud.storage.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.mvillabe.books.domain.exceptions.FileNotFoundException;
 import org.springframework.core.io.buffer.DataBuffer;
 import org.springframework.core.io.buffer.DataBufferUtils;
 import org.springframework.http.codec.multipart.FilePart;
@@ -20,7 +21,6 @@ public class StorageService {
     private final Storage storage;
 
     public void uploadFile(BlobId blobId, FilePart filePart, Consumer<String> onUpload) {
-        storage.create(BucketInfo.of("attachments"), Storage.BucketTargetOption.predefinedAcl(Storage.PredefinedAcl.PUBLIC_READ));
         String contentType = "image/jpeg";
         if(filePart.headers().getContentType() != null) {
             contentType = filePart.headers().getContentType().toString();
@@ -45,5 +45,13 @@ public class StorageService {
 
     private void onError(Throwable throwable) {
         log.error("Error processing bucket upload {}", throwable.getMessage(), throwable);
+    }
+
+    public byte[] getFileBytes(BlobId blobId) {
+        Blob blob = storage.get(blobId);
+        if(blob == null) {
+            throw new FileNotFoundException();
+        }
+        return blob.getContent();
     }
 }

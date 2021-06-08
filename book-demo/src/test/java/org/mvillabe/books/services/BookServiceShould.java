@@ -1,5 +1,6 @@
 package org.mvillabe.books.services;
 
+import com.google.cloud.storage.BlobId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mvillabe.books.api.dtos.BookDTO;
@@ -10,6 +11,7 @@ import org.mvillabe.books.domain.entities.Author;
 import org.mvillabe.books.domain.entities.Book;
 import org.mvillabe.books.domain.exceptions.AuthorNotFoundException;
 import org.mvillabe.books.domain.exceptions.BookNotFoundException;
+import org.mvillabe.books.domain.exceptions.FileNotFoundException;
 import org.mvillabe.books.domain.repositories.BookRepository;
 
 import java.util.List;
@@ -84,5 +86,13 @@ public class BookServiceShould {
         when(authorService.findAuthorById(any(Long.class))).thenThrow(new AuthorNotFoundException(1L));
         assertThrows(AuthorNotFoundException.class, () -> bookService.createBook(bookDTO));
         assertThrows(BookNotFoundException.class, () -> bookService.findBook(1L));
+
+    }
+
+    @Test
+    public void handleStorageError() {
+        when(bookRepository.findById(1L)).thenReturn(Optional.of(BookMother.randomBook()));
+        when(storageService.getFileBytes(any(BlobId.class))).thenThrow(new FileNotFoundException());
+        assertThrows(FileNotFoundException.class, () -> bookService.getBookCover(1L));
     }
 }
