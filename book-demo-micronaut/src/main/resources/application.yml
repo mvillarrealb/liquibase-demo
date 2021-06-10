@@ -1,9 +1,10 @@
 micronaut:
+  profile: production
   application:
     name: bookDemoMicronaut
 datasources:
   default:
-    url: jdbc:postgresql://localhost:5432/book_demo_micronaut
+    url: jdbc:postgresql://localhost:5432/book_inventory
     driverClassName: org.postgresql.Driver
     username: postgres
     password: 'casa1234'
@@ -13,3 +14,18 @@ liquibase:
   datasources:
     default:
       change-log: 'classpath:db/changelog.yaml'
+---
+jpa:
+  default:
+    entity-scan:
+      packages: 'org.mvillabe.books.domain'
+hibernate:
+  physical_naming_strategy: "com.vladmihalcea.hibernate.type.util.CamelCaseToSnakeCaseNamingStrategy"
+  types:
+    print:
+      banner: false
+---
+gcp:
+  project-id: "${PROJECT_ID}"
+  credentials:
+    encoded-key: "${ENCODED_CREDENTIALS}"

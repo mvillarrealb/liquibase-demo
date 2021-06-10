@@ -15,8 +15,6 @@ spring:
     url: "jdbc:tc:postgresql:11.7-alpine:///book_demo"
     driverClassName: "org.testcontainers.jdbc.ContainerDatabaseDriver"
   cloud:
-    refresh:
-      extra-refreshable: om.google.cloud.spring.pubsub.support.SubscriberFactory, com.google.cloud.spring.pubsub.core.subscriber.PubSubSubscriberTemplate
     gcp:
       project-id: "test-containers"
       credentials: # Dummy encoded key

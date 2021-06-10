@@ -146,7 +146,13 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"RANDOM_ID\", Math.floor(Math.random() * 10));"
+									"function getRandomInt(min, max) {",
+									"    min = Math.ceil(min);",
+									"    max = Math.floor(max);",
+									"    return Math.floor(Math.random() * (max - min + 1)) + min;",
+									"}",
+									"/**set an random book Id with a number that will not be found on the database */",
+									"pm.environment.set(\"RANDOM_ID\",  getRandomInt(1000, 9999));"
 								],
 								"type": "text/javascript"
 							}
@@ -311,7 +317,13 @@
 							"listen": "prerequest",
 							"script": {
 								"exec": [
-									"pm.environment.set(\"RANDOM_ID\", Math.floor(Math.random() * 10));"
+									"function getRandomInt(min, max) {",
+									"    min = Math.ceil(min);",
+									"    max = Math.floor(max);",
+									"    return Math.floor(Math.random() * (max - min + 1)) + min;",
+									"}",
+									"/**set an random book Id with a number that will not be found on the database */",
+									"pm.environment.set(\"RANDOM_ID\",  getRandomInt(1000, 9999));"
 								],
 								"type": "text/javascript"
 							}
@@ -328,6 +340,103 @@
 							"path": [
 								"books",
 								"{{RANDOM_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "attachBookCover",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "./newman/StephenKingPetSematary.jpg"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/books/1/cover",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"1",
+								"cover"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "fetchBookCover",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", () => {",
+									"  pm.response.to.have.status(200);",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "files",
+									"type": "file",
+									"src": "/home/mvillarreal/Imágenes/Captura de pantalla de 2021-06-04 14-25-25.png"
+								}
+							],
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/books/1/cover",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"books",
+								"1",
+								"cover"
 							]
 						}
 					},
