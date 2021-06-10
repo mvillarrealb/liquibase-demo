@@ -8,14 +8,3 @@ databaseChangeLog:
         relativeToChangelogFile: true
         stripComments: true
         path: "v_1_0_0/main-changelog.sql"
-  - changeSet:
-      id: v_1_0_1
-      author: "Marco Villarreal"
-      comment: | # We can use yaml multi-line syntax for more descriptive changelog comments
-        * Adding comments for author's table
-        * Adding comments for book's table
-      sqlFile:
-        encoding: utf8
-        relativeToChangelogFile: true
-        stripComments: true
-        path: "v_1_0_1/adding-comments.sql"

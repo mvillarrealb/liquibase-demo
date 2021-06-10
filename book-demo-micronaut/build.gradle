@@ -20,6 +20,7 @@ micronaut {
 }
 
 dependencies {
+    annotationProcessor("org.projectlombok:lombok")
     annotationProcessor("io.micronaut.data:micronaut-data-processor")
     implementation("io.micronaut:micronaut-http-client")
     implementation("io.micronaut:micronaut-runtime")
@@ -27,12 +28,22 @@ dependencies {
     implementation("io.micronaut.liquibase:micronaut-liquibase")
     implementation("io.micronaut.sql:micronaut-jdbc-hikari")
     implementation("javax.annotation:javax.annotation-api")
+    implementation("io.micronaut.gcp:micronaut-gcp-pubsub")
+    implementation("com.vladmihalcea:hibernate-types-52:2.9.8")
+    implementation('com.github.javafaker:javafaker:1.0.2')
+
+    compileOnly("org.projectlombok:lombok")
     runtimeOnly("ch.qos.logback:logback-classic")
     runtimeOnly("org.postgresql:postgresql")
+
+
     testImplementation("org.testcontainers:junit-jupiter")
     testImplementation("org.testcontainers:postgresql")
     testImplementation("org.testcontainers:testcontainers")
     implementation("io.micronaut:micronaut-validation")
+
+    implementation "org.testcontainers:gcloud:1.15.3"
+    runtimeOnly 'org.testcontainers:postgresql'
 
 }
 

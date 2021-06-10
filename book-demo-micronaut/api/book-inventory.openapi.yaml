@@ -1,0 +1,14 @@
+open-api: "3.0"
+info:
+  description: ""
+  version: ""
+  title: ""
+  contact:
+    email: "demo@gmail.com"
+tags:
+  - name: "accounts"
+    description: ""
+schemes:
+  - "https"
+paths:
+  /accounts/signin:
